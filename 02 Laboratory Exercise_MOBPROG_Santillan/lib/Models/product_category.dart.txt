@@ -1,0 +1,17 @@
+product_category.dart
+
+//A fixed list for filtering the product sample, ENUM = Holds the input data for the category
+
+enum ProductCategory {
+  Streetcar('Street Car'),
+  Hypercar('Hyper Car'),
+  Supercar('Super Car'),
+  Trackcar('Track Car'),
+  Rallycar('Rally Car'),
+  Driftcar('Drift Car'),
+  Musclecar('Muscle Car');
+
+  const ProductCategory(this.label);
+
+  final String label;
+}

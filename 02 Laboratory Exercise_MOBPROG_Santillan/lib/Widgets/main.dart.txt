@@ -1,0 +1,64 @@
+main.dart
+
+import 'package:flutter/material.dart'; //Add widgets extensions or materials from flutter
+import 'sample_product.dart'; //Input Data
+import 'product_page.dart'; //Adding the Structure, and Format of the application
+
+void main() {
+  runApp(const MyApp()); //Allows Users to Run The Catalog App
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  //adds the appearance, features, or theme of the whole website like dark or light mode
+  ThemeMode _mode = ThemeMode.light;
+  @override
+  Widget build(BuildContext context) {
+    const seedColor = Colors.teal;
+    return MaterialApp(
+      title: 'Catalog App',
+      debugShowCheckedModeBanner: false,
+      themeMode: _mode,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: seedColor,
+          brightness: Brightness.light,
+        ),
+      ),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: seedColor,
+          brightness: Brightness.dark,
+        ),
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Car Automotive Catalog'),
+          actions: [
+            IconButton(
+              tooltip: _mode == ThemeMode.dark
+                  ? 'Switch to Light Mode'
+                  : 'Switch to Dark Mode',
+              icon: Icon(
+                _mode == ThemeMode.dark ? Icons.light_mode : Icons.dark_mode,
+              ),
+              onPressed: () => setState(
+                () => _mode = _mode == ThemeMode.light
+                    ? ThemeMode.dark
+                    : ThemeMode.light,
+              ),
+            ),
+          ],
+        ),
+        body: CatalogPage(items: sampleProducts),
+      ),
+    );
+  }
+}

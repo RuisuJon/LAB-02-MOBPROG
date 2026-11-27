@@ -1,0 +1,23 @@
+product.dart
+
+import 'product_category.dart'; //calling the product category, this where the data follows the filtering process when you click the specific product type
+
+class Product {
+  final String id;
+  final String name;
+  final String year;
+  final double price;
+  final ProductCategory category;
+  final String imagePath;
+  final String description;
+
+  const Product({
+    required this.id,
+    required this.name,
+    required this.year,
+    required this.price,
+    required this.category,
+    required this.imagePath,
+    required this.description,
+  });
+}
